@@ -1,0 +1,1 @@
+V1.0 - Able to completely parse EOL file into dictionary of dictionaries
