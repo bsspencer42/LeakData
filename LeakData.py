@@ -64,23 +64,41 @@ def getLeak(myFile):
     startTime = timeStamp[timeStamp.find("_") + 1:].replace("-", ":")
 
     # Leak Information
-    leakRate = round(float(Master["[pPosZSB_Pruefergebnisse]"]["Q_ZSB2_Mess"]), 2)
-    result = Master["[pPosZSB_Ergebnis]"]["0"].strip('"')
+    if "[pPosZSB_Pruefergebnisse]" in Master.keys():
+        overPressure = round(float(Master["[pPosZSB_Pruefergebnisse]"]["Q_ZSB2_Mess"]), 2)
+        resultOver = Master["[pPosZSB_Ergebnis]"]["0"].strip('"')
+    else:
+        overPressure = ""
+        resultOver = ""
 
-    # List of values for output file
-    myExcelData = [startDate, startTime, batType, battery, partNum, leakRate, result]
+    if "[pNegZSB_pPosKS_Pruefergebnisse]" in Master.keys():
+        underPressure = round(float(Master["[pNegZSB_pPosKS_Pruefergebnisse]"]["Q_ZSB1_Mess"]), 2)
+        coolPressure = round(float(Master["[pNegZSB_pPosKS_Pruefergebnisse]"]["Q_Kuehl_Mess"]), 2)
+        resultUnder = Master["[pNegZSB_pPosKS_Ergebnis]"]["0"].strip('"')
+    else:
+        coolPressure = ""
+        underPressure = ""
+        resultUnder = ""
+
+    resultFinal = Master["[Ergebnis]"]["0"].strip('"')
+
+
+        # List of values for output file
+    myExcelData = [startDate, startTime, batType, battery, partNum, coolPressure, underPressure, resultUnder, overPressure,resultOver,
+                   resultFinal]
 
     return myExcelData
 
 #Directory for leak test data
-myLeakDir = r'\\vwoachsfile01\assembly\Departments\Assembly Launch\Battery Plant Status\Pilot Hall\IOL_EOL_Leak Docs\PVS'
+myLeakDir = r'\\vwoachsfile01\assembly\Departments\Assembly Launch\Battery Plant Status\Pilot Hall\IOL_EOL_Leak Docs\All Results'
 
 #Setup Excel workbook
 wb = Workbook()
 sheet = wb.active
 
 #Setup headers
-myHeaders = ["Date", "Timestamp", "Model", "Serial", "Part Number", "Leak Rate\n(cc/m)", "Result", "Filename"]
+myHeaders = ["Date", "Timestamp", "Model", "Serial", "Part Number","Cooling Leak Rate\n(cc/m)","UnderPressure Leak Rate\n(cc/m)","UnderResult", "OverPressure Leak Rate\n(cc/m)", "OverResult",
+             "Overall Result", "Filename"]
 for i in range(len(myHeaders)):
     sheet.cell(1,i+1).value = myHeaders[i]
 
@@ -102,6 +120,7 @@ for testData in os.listdir(myLeakDir):
     sheet.cell(lineNum, 5).number_format = "h:mm:ss AM/PM"
     lineNum += 1
     print(myExcelData[3])
+    wb.save(filename="leak_data.xlsx")
 
 #Adjust cell columns
 for column_cells in sheet.columns:
