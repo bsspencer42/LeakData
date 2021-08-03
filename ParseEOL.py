@@ -124,13 +124,38 @@ CellVoltageMin = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]
 CellVoltageMax = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["U_ZellMax_Set_Batteriestatus"]))
 CellVoltageRange = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["dU_ZellMax_Set_Batteriestatus"]))
 
-
+#Temp/Voltage Check
+CellTempCheck = Master["[Batteriestatus_Pruefergebnisse]"]["Temperaturwerte iO/niO?"]
+CellTemp1 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [0]"]))
+CellTemp2 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [1]"]))
+CellTemp3 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [2]"]))
+CellTemp4 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [3]"]))
+CellTemp5 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [4]"]))
+CellTemp6 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [5]"]))
+CellTemp7 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [6]"]))
+CellTemp8 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [7]"]))
+CellTemp9 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [8]"]))
+CellTemp10 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [9]"]))
+CellTemp11 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [10]"]))
+CellTemp12 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [11]"]))
+CellTemp13 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [12]"]))
+CellTemp14 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [13]"]))
+CellTemp15 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [14]"]))
+CellTemp16 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [15]"]))
+CellTemp17 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [16]"]))
+CellTemp18 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [17]"]))
+CellTemp19 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [18]"]))
+CellTemp20 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [19]"]))
+CellTemp21 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [20]"]))
+CellTemp22 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [21]"]))
+CellTemp23 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [22]"]))
+CellTemp24 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [23]"]))
 
 #List of values for output file
 myExcelData = [battery, partNum, batType, startDate, startTime, i_DTC_Count, initBCMe, initCMC1, initCMC2, initCMC3, initBL_BCMe, initBL_CMC1, initBL_CMC2, initBL_CMC3, batConfigPset, batVehiclePset, batTargetMarketPset, batConfigNamePset, batThermoPset, batNameVehiclePset, batNameTargetMarket, HW_NumCMC1, HW_NumCMC2, HW_NumCMC3,serial_CMC1,serial_CMC2,serial_CMC3,HW_NumBMCe,HW_serial_BMCe,SW_serial_BMCe,HW_serial_CMC1,HW_serial_CMC2,HW_serial_CMC3,SW_serial_CMC1,SW_serial_CMC2,SW_serial_CMC3,\
-               preFlashBCMeSW_Check,PostFlashBCMeSW_Check,dataSet_download_Check,PostDSDL_BCMeSW_Check,preFlashCMCSW_Check,PostFlashCMCSW_Check,SW_Check,CellTempMin,CellTempMax,CellTempRange,CellVoltageMin,CellVoltageMax,CellVoltageRange]
+               preFlashBCMeSW_Check,PostFlashBCMeSW_Check,dataSet_download_Check,PostDSDL_BCMeSW_Check,preFlashCMCSW_Check,PostFlashCMCSW_Check,SW_Check,CellTempMin,CellTempMax,CellTempRange,CellVoltageMin,CellVoltageMax,CellVoltageRange,CellTempCheck,CellTemp1,CellTemp2,CellTemp3,CellTemp4,CellTemp5,CellTemp6,CellTemp7,CellTemp8,CellTemp9,CellTemp10,CellTemp11,CellTemp12,CellTemp13,CellTemp14,CellTemp15,CellTemp16,CellTemp17,CellTemp18,CellTemp19,CellTemp20,CellTemp21,CellTemp22,CellTemp23,CellTemp24]
 myHeaders = ["Battery","Part Number", "Type","Date","Start Time","DTC Count","BCMe Begin SW","CMC1 Begin SW","CMC2 Begin SW","CMC3 Begin SW","BCMe Begin BL","CMC1 Begin BL","CMC2 Begin BL","CMC3 Begin BL","BatConfigPSet","VehiclePSet","TargetMarket","ConfigNamePSet","ThermoPSet","NameVehiclePSet","NameTargetMarket","CMC1 HW","CMC2 HW","CMC3 HW","CMC1 Serial","CMC2 Serial","CMC3 Serial","BCMe HW", "BCMe HW Serial", "BCMe SW Serial", "CMC1 HW Serial","CMC2 HW Serial","CMC3 HW Serial","CMC1 SW Serial","CMC2 SW Serial","CMC3 SW Serial",\
-             "preFlashBCMeSW_Check","PostFlashBCMeSW_Check","dataSet_download_Check","PostDSDL_BCMeSW_Check","preFlashCMCSW_Check","PostFlashCMCSW_Check","SW_Check","CellTempMin","CellTempMax","CellTempRange","CellVoltageMin","CellVoltageMax","CellVoltageRange"]
+             "preFlashBCMeSW_Check","PostFlashBCMeSW_Check","dataSet_download_Check","PostDSDL_BCMeSW_Check","preFlashCMCSW_Check","PostFlashCMCSW_Check","SW_Check","CellTempMin","CellTempMax","CellTempRange","CellVoltageMin","CellVoltageMax","CellVoltageRange","CellTempCheck","CellTemp1","CellTemp2","CellTemp3","CellTemp4","CellTemp5","CellTemp6","CellTemp7","CellTemp8","CellTemp9","CellTemp10","CellTemp11","CellTemp12","CellTemp13","CellTemp14","CellTemp15","CellTemp16","CellTemp17","CellTemp18","CellTemp19","CellTemp20","CellTemp21","CellTemp22","CellTemp23","CellTemp24"]
 count = 0
 
 for header in myHeaders:
