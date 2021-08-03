@@ -110,6 +110,12 @@ startTime = timeStamp[timeStamp.find("_")+1:].replace("-",":")
 
 #List of values for output file
 myExcelData = [battery, partNum, batType, startDate, startTime, i_DTC_Count, initBCMe, initCMC1, initCMC2, initCMC3, initBL_BCMe, initBL_CMC1, initBL_CMC2, initBL_CMC3, batConfigPset, batVehiclePset, batTargetMarketPset, batConfigNamePset, batThermoPset, batNameVehiclePset, batNameTargetMarket, HW_NumCMC1, HW_NumCMC2, HW_NumCMC3,serial_CMC1,serial_CMC2,serial_CMC3,HW_NumBMCe,HW_serial_BMCe,SW_serial_BMCe,HW_serial_CMC1,HW_serial_CMC2,HW_serial_CMC3,SW_serial_CMC1,SW_serial_CMC2,SW_serial_CMC3]
+myHeaders = ["Battery","Part Number", "Type","Date","Start Time","DTC Count","BCMe Begin SW","CMC1 Begin SW","CMC2 Begin SW","CMC3 Begin SW","BCMe Begin BL","CMC1 Begin BL","CMC2 Begin BL","CMC3 Begin BL","BatConfigPSet","VehiclePSet","TargetMarket","ConfigNamePSet","ThermoPSet","NameVehiclePSet","NameTargetMarket","CMC1 HW","CMC2 HW","CMC3 HW","CMC1 Serial","CMC2 Serial","CMC3 Serial","BCMe HW", "BCMe HW Serial", "BCMe SW Serial", "CMC1 HW Serial","CMC2 HW Serial","CMC3 HW Serial","CMC1 SW Serial","CMC2 SW Serial","CMC3 SW Serial"]
+count = 0
+
+for header in myHeaders:
+    count = count + 1
+    sheet.cell(1, count).value = header
 
 count = 0
 for myVals in myExcelData:
