@@ -116,13 +116,21 @@ preFlashCMCSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PreFlash_CMC
 PostFlashCMCSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PostFlash_CMCSwVers_CheckOK?"]
 SW_Check = Master["[SW_Steuergeraete_Ergebnis]"]["0"]
 
+#Battery Status Setpoints Specs
+CellTempMin = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["T_ZellMin_Set_Batteriestatus"]))
+CellTempMax = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["T_ZellMax_Set_Batteriestatus"]))
+CellTempRange = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["dT_ZellMax_Set_Batteriestatus"]))
+CellVoltageMin = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["U_ZellMin_Set_Batteriestatus"]))
+CellVoltageMax = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["U_ZellMax_Set_Batteriestatus"]))
+CellVoltageRange = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["dU_ZellMax_Set_Batteriestatus"]))
+
 
 
 #List of values for output file
 myExcelData = [battery, partNum, batType, startDate, startTime, i_DTC_Count, initBCMe, initCMC1, initCMC2, initCMC3, initBL_BCMe, initBL_CMC1, initBL_CMC2, initBL_CMC3, batConfigPset, batVehiclePset, batTargetMarketPset, batConfigNamePset, batThermoPset, batNameVehiclePset, batNameTargetMarket, HW_NumCMC1, HW_NumCMC2, HW_NumCMC3,serial_CMC1,serial_CMC2,serial_CMC3,HW_NumBMCe,HW_serial_BMCe,SW_serial_BMCe,HW_serial_CMC1,HW_serial_CMC2,HW_serial_CMC3,SW_serial_CMC1,SW_serial_CMC2,SW_serial_CMC3,\
-               preFlashBCMeSW_Check,PostFlashBCMeSW_Check,dataSet_download_Check,PostDSDL_BCMeSW_Check,preFlashCMCSW_Check,PostFlashCMCSW_Check,SW_Check]
+               preFlashBCMeSW_Check,PostFlashBCMeSW_Check,dataSet_download_Check,PostDSDL_BCMeSW_Check,preFlashCMCSW_Check,PostFlashCMCSW_Check,SW_Check,CellTempMin,CellTempMax,CellTempRange,CellVoltageMin,CellVoltageMax,CellVoltageRange]
 myHeaders = ["Battery","Part Number", "Type","Date","Start Time","DTC Count","BCMe Begin SW","CMC1 Begin SW","CMC2 Begin SW","CMC3 Begin SW","BCMe Begin BL","CMC1 Begin BL","CMC2 Begin BL","CMC3 Begin BL","BatConfigPSet","VehiclePSet","TargetMarket","ConfigNamePSet","ThermoPSet","NameVehiclePSet","NameTargetMarket","CMC1 HW","CMC2 HW","CMC3 HW","CMC1 Serial","CMC2 Serial","CMC3 Serial","BCMe HW", "BCMe HW Serial", "BCMe SW Serial", "CMC1 HW Serial","CMC2 HW Serial","CMC3 HW Serial","CMC1 SW Serial","CMC2 SW Serial","CMC3 SW Serial",\
-             "preFlashBCMeSW_Check","PostFlashBCMeSW_Check","dataSet_download_Check","PostDSDL_BCMeSW_Check","preFlashCMCSW_Check","PostFlashCMCSW_Check","SW_Check"]
+             "preFlashBCMeSW_Check","PostFlashBCMeSW_Check","dataSet_download_Check","PostDSDL_BCMeSW_Check","preFlashCMCSW_Check","PostFlashCMCSW_Check","SW_Check","CellTempMin","CellTempMax","CellTempRange","CellVoltageMin","CellVoltageMax","CellVoltageRange"]
 count = 0
 
 for header in myHeaders:
