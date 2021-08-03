@@ -107,10 +107,22 @@ startDate = timeStamp[:timeStamp.find("_")]
 startDate = startDate[4:6] + "/" + startDate[6:] + "/" + startDate[:4]
 startTime = timeStamp[timeStamp.find("_")+1:].replace("-",":")
 
+#SW Flash Report
+preFlashBCMeSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PreFlash_BMCSwVers_CheckOK?"]
+PostFlashBCMeSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PostFlash_BMCSwVers_CheckOK?"]
+dataSet_download_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["DatensatzdownloadOK?"]
+PostDSDL_BCMeSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PostDSDL_DSDLSwVers_CheckOK?"]
+preFlashCMCSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PreFlash_CMCSwVers_CheckOK?"]
+PostFlashCMCSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PostFlash_CMCSwVers_CheckOK?"]
+SW_Check = Master["[SW_Steuergeraete_Ergebnis]"]["0"]
+
+
 
 #List of values for output file
-myExcelData = [battery, partNum, batType, startDate, startTime, i_DTC_Count, initBCMe, initCMC1, initCMC2, initCMC3, initBL_BCMe, initBL_CMC1, initBL_CMC2, initBL_CMC3, batConfigPset, batVehiclePset, batTargetMarketPset, batConfigNamePset, batThermoPset, batNameVehiclePset, batNameTargetMarket, HW_NumCMC1, HW_NumCMC2, HW_NumCMC3,serial_CMC1,serial_CMC2,serial_CMC3,HW_NumBMCe,HW_serial_BMCe,SW_serial_BMCe,HW_serial_CMC1,HW_serial_CMC2,HW_serial_CMC3,SW_serial_CMC1,SW_serial_CMC2,SW_serial_CMC3]
-myHeaders = ["Battery","Part Number", "Type","Date","Start Time","DTC Count","BCMe Begin SW","CMC1 Begin SW","CMC2 Begin SW","CMC3 Begin SW","BCMe Begin BL","CMC1 Begin BL","CMC2 Begin BL","CMC3 Begin BL","BatConfigPSet","VehiclePSet","TargetMarket","ConfigNamePSet","ThermoPSet","NameVehiclePSet","NameTargetMarket","CMC1 HW","CMC2 HW","CMC3 HW","CMC1 Serial","CMC2 Serial","CMC3 Serial","BCMe HW", "BCMe HW Serial", "BCMe SW Serial", "CMC1 HW Serial","CMC2 HW Serial","CMC3 HW Serial","CMC1 SW Serial","CMC2 SW Serial","CMC3 SW Serial"]
+myExcelData = [battery, partNum, batType, startDate, startTime, i_DTC_Count, initBCMe, initCMC1, initCMC2, initCMC3, initBL_BCMe, initBL_CMC1, initBL_CMC2, initBL_CMC3, batConfigPset, batVehiclePset, batTargetMarketPset, batConfigNamePset, batThermoPset, batNameVehiclePset, batNameTargetMarket, HW_NumCMC1, HW_NumCMC2, HW_NumCMC3,serial_CMC1,serial_CMC2,serial_CMC3,HW_NumBMCe,HW_serial_BMCe,SW_serial_BMCe,HW_serial_CMC1,HW_serial_CMC2,HW_serial_CMC3,SW_serial_CMC1,SW_serial_CMC2,SW_serial_CMC3,\
+               preFlashBCMeSW_Check,PostFlashBCMeSW_Check,dataSet_download_Check,PostDSDL_BCMeSW_Check,preFlashCMCSW_Check,PostFlashCMCSW_Check,SW_Check]
+myHeaders = ["Battery","Part Number", "Type","Date","Start Time","DTC Count","BCMe Begin SW","CMC1 Begin SW","CMC2 Begin SW","CMC3 Begin SW","BCMe Begin BL","CMC1 Begin BL","CMC2 Begin BL","CMC3 Begin BL","BatConfigPSet","VehiclePSet","TargetMarket","ConfigNamePSet","ThermoPSet","NameVehiclePSet","NameTargetMarket","CMC1 HW","CMC2 HW","CMC3 HW","CMC1 Serial","CMC2 Serial","CMC3 Serial","BCMe HW", "BCMe HW Serial", "BCMe SW Serial", "CMC1 HW Serial","CMC2 HW Serial","CMC3 HW Serial","CMC1 SW Serial","CMC2 SW Serial","CMC3 SW Serial",\
+             "preFlashBCMeSW_Check","PostFlashBCMeSW_Check","dataSet_download_Check","PostDSDL_BCMeSW_Check","preFlashCMCSW_Check","PostFlashCMCSW_Check","SW_Check"]
 count = 0
 
 for header in myHeaders:
@@ -125,8 +137,7 @@ for myVals in myExcelData:
 #Format for time
 sheet.cell(2,5).number_format = "h:mm:ss AM/PM"
 
-for i in myExcelData:
-    print(i)
-
+for i in range(len(myExcelData)):
+    print(myHeaders[i] + " : " +myExcelData[i])
 
 wb.save(filename="hello_world.xlsx")
