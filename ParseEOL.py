@@ -151,6 +151,7 @@ CellTemp22 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T
 CellTemp23 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [22]"]))
 CellTemp24 = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["T_Zell_Get[n] [23]"]))
 CellTempRange = "{:.2f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["dT_Zell_Calc"]))
+
 #Voltage Check
 CellVoltCheck = Master["[Batteriestatus_Pruefergebnisse]"]["Spannungswerte iO/niO?"]
 CellVolt1 = "{:.3f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["U_Zell_Get[n] [0]"]))
@@ -249,18 +250,38 @@ CellVolt93 = "{:.3f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["U
 CellVolt94 = "{:.3f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["U_Zell_Get[n] [93]"]))
 CellVolt95 = "{:.3f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["U_Zell_Get[n] [94]"]))
 CellVolt96 = "{:.3f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["U_Zell_Get[n] [95]"]))
+CellVoltRange = "{:.1f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["dU_Zell_Calc"]))
+CV_DTC1 = Master["[Batteriestatus_Pruefergebnisse]"]["DTCs_Get [0]"]
+CV_DTC2 = Master["[Batteriestatus_Pruefergebnisse]"]["DTCs_Get [1]"]
+CV_DTC3 = Master["[Batteriestatus_Pruefergebnisse]"]["DTCs_Get [2]"]
+CV_DTC4 = Master["[Batteriestatus_Pruefergebnisse]"]["DTCs_Get [3]"]
 
+#Cell Voltage and Temp Results
+CellVoltageMinActual = "{:.3f}".format(float(Master["[Batteriestatus_Ablaufkriterien]"]["U_ZellMin_Get"])/1000)
+CellVoltageMaxActual = "{:.3f}".format(float(Master["[Batteriestatus_Ablaufkriterien]"]["U_ZellMax_Get"])/1000)
+CellTempMinActual = "{:.3f}".format(float(Master["[Batteriestatus_Ablaufkriterien]"]["T_ZellMin_Get"]))
+CellTempMaxActual = "{:.3f}".format(float(Master["[Batteriestatus_Ablaufkriterien]"]["T_ZellMax_Get"]))
+TempVoltageResult = Master["[Batteriestatus_Ergebnis]"]["0"]
+
+#Pyrofuse Setpoints
+PyroCheckCount = Master["[Pyrofuse_Allgemeine Informationen]"]["uPruefungszaehlerIst"]
+PyroMinSet = "{:.5f}".format(float(Master["[Pyrofuse_Sollwertvorgaben]"]["R_PyroMin_Set"]))
+PyroMaxSet = "{:.5f}".format(float(Master["[Pyrofuse_Sollwertvorgaben]"]["R_PyroMax_Set"]))
+
+#Pyrofuse Check
+PyroCheckResult = "{:.5f}".format(float(Master["[Pyrofuse_Pruefergebnisse]"]["R_Pyro_Mess"]))
+PyroCheckStatus = Master["[Pyrofuse_Ergebnis]"]["0"]
 
 
 #List of values for output file
 myExcelData = [battery, partNum, batType, startDate, startTime, i_DTC_Count, initBCMe, initCMC1, initCMC2, initCMC3, initBL_BCMe, initBL_CMC1, initBL_CMC2, initBL_CMC3, batConfigPset, batVehiclePset, batTargetMarketPset, batConfigNamePset, batThermoPset, batNameVehiclePset, batNameTargetMarket, HW_NumCMC1, HW_NumCMC2, HW_NumCMC3,serial_CMC1,serial_CMC2,serial_CMC3,HW_NumBMCe,HW_serial_BMCe,SW_serial_BMCe,HW_serial_CMC1,HW_serial_CMC2,HW_serial_CMC3,SW_serial_CMC1,SW_serial_CMC2,SW_serial_CMC3,\
                preFlashBCMeSW_Check,PostFlashBCMeSW_Check,dataSet_download_Check,PostDSDL_BCMeSW_Check,preFlashCMCSW_Check,PostFlashCMCSW_Check,SW_Check,CellTempMin,CellTempMax,CellTempRange,CellVoltageMin,CellVoltageMax,CellVoltageRange,CellTempCheck,CellTemp1,CellTemp2,CellTemp3,CellTemp4,CellTemp5,CellTemp6,CellTemp7,CellTemp8,CellTemp9,CellTemp10,CellTemp11,CellTemp12,CellTemp13,CellTemp14,CellTemp15,CellTemp16,CellTemp17,CellTemp18,CellTemp19,CellTemp20,CellTemp21,CellTemp22,CellTemp23,CellTemp24,\
                CellTempRange,CellVolt1,CellVolt2,CellVolt3,CellVolt4,CellVolt5,CellVolt6,CellVolt7,CellVolt8,CellVolt9,CellVolt10,CellVolt11,CellVolt12,CellVolt13,CellVolt14,CellVolt15,CellVolt16,CellVolt17,CellVolt18,CellVolt19,CellVolt20,CellVolt21,CellVolt22,CellVolt23,CellVolt24,CellVolt25,CellVolt26,CellVolt27,CellVolt28,CellVolt29,CellVolt30,CellVolt31,CellVolt32,CellVolt33,CellVolt34,CellVolt35,CellVolt36,CellVolt37,CellVolt38,CellVolt39,CellVolt40,CellVolt41,CellVolt42,CellVolt43,CellVolt44,CellVolt45,CellVolt46,CellVolt47,CellVolt48,CellVolt49,CellVolt50,CellVolt51,CellVolt52,CellVolt53,CellVolt54,CellVolt55,CellVolt56,CellVolt57,CellVolt58,CellVolt59,CellVolt60,CellVolt61,CellVolt62,CellVolt63,CellVolt64,CellVolt65,CellVolt66,CellVolt67,CellVolt68,CellVolt69,CellVolt70,CellVolt71,CellVolt72,CellVolt73,CellVolt74,CellVolt75,CellVolt76,CellVolt77,CellVolt78,CellVolt79,CellVolt80,CellVolt81,CellVolt82,CellVolt83,CellVolt84,CellVolt85,CellVolt86,CellVolt87,CellVolt88,CellVolt89,CellVolt90,CellVolt91,CellVolt92,CellVolt93,CellVolt94,CellVolt95,CellVolt96,\
-               ]
+               CellVoltRange,CV_DTC1,CV_DTC2,CV_DTC3,CV_DTC4,CellVoltageMinActual,CellVoltageMaxActual,CellTempMinActual,CellVoltageMaxActual,TempVoltageResult,PyroCheckCount,PyroMinSet,PyroMaxSet,PyroCheckResult,PyroCheckStatus]
 myHeaders = ["Battery","Part Number", "Type","Date","Start Time","DTC Count","BCMe Begin SW","CMC1 Begin SW","CMC2 Begin SW","CMC3 Begin SW","BCMe Begin BL","CMC1 Begin BL","CMC2 Begin BL","CMC3 Begin BL","BatConfigPSet","VehiclePSet","TargetMarket","ConfigNamePSet","ThermoPSet","NameVehiclePSet","NameTargetMarket","CMC1 HW","CMC2 HW","CMC3 HW","CMC1 Serial","CMC2 Serial","CMC3 Serial","BCMe HW", "BCMe HW Serial", "BCMe SW Serial", "CMC1 HW Serial","CMC2 HW Serial","CMC3 HW Serial","CMC1 SW Serial","CMC2 SW Serial","CMC3 SW Serial",\
              "preFlashBCMeSW_Check","PostFlashBCMeSW_Check","dataSet_download_Check","PostDSDL_BCMeSW_Check","preFlashCMCSW_Check","PostFlashCMCSW_Check","SW_Check","CellTempMin","CellTempMax","CellTempRange","CellVoltageMin","CellVoltageMax","CellVoltageRange","CellTempCheck","CellTemp1","CellTemp2","CellTemp3","CellTemp4","CellTemp5","CellTemp6","CellTemp7","CellTemp8","CellTemp9","CellTemp10","CellTemp11","CellTemp12","CellTemp13","CellTemp14","CellTemp15","CellTemp16","CellTemp17","CellTemp18","CellTemp19","CellTemp20","CellTemp21","CellTemp22","CellTemp23","CellTemp24",\
              "CellTempRange","CellVolt1","CellVolt2","CellVolt3","CellVolt4","CellVolt5","CellVolt6","CellVolt7","CellVolt8","CellVolt9","CellVolt10","CellVolt11","CellVolt12","CellVolt13","CellVolt14","CellVolt15","CellVolt16","CellVolt17","CellVolt18","CellVolt19","CellVolt20","CellVolt21","CellVolt22","CellVolt23","CellVolt24","CellVolt25","CellVolt26","CellVolt27","CellVolt28","CellVolt29","CellVolt30","CellVolt31","CellVolt32","CellVolt33","CellVolt34","CellVolt35","CellVolt36","CellVolt37","CellVolt38","CellVolt39","CellVolt40","CellVolt41","CellVolt42","CellVolt43","CellVolt44","CellVolt45","CellVolt46","CellVolt47","CellVolt48","CellVolt49","CellVolt50","CellVolt51","CellVolt52","CellVolt53","CellVolt54","CellVolt55","CellVolt56","CellVolt57","CellVolt58","CellVolt59","CellVolt60","CellVolt61","CellVolt62","CellVolt63","CellVolt64","CellVolt65","CellVolt66","CellVolt67","CellVolt68","CellVolt69","CellVolt70","CellVolt71","CellVolt72","CellVolt73","CellVolt74","CellVolt75","CellVolt76","CellVolt77","CellVolt78","CellVolt79","CellVolt80","CellVolt81","CellVolt82","CellVolt83","CellVolt84","CellVolt85","CellVolt86","CellVolt87","CellVolt88","CellVolt89","CellVolt90","CellVolt91","CellVolt92","CellVolt93","CellVolt94","CellVolt95","CellVolt96",\
-             ]
+             "CellVoltRange","CV_DTC1","CV_DTC2","CV_DTC3","CV_DTC4","CellVoltageMinActual","CellVoltageMaxActual","CellTempMinActual","CellVoltageMaxActual","TempVoltageResult","PyroCheckCount","PyroMinSet","PyroMaxSet","PyroCheckResult","PyroCheckStatus"]
 count = 0
 
 for header in myHeaders:
