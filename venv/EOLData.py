@@ -115,9 +115,9 @@ def getEOL(myFile):
     SW_Check = Master["[SW_Steuergeraete_Ergebnis]"].get("0")
 
     #Battery Status Setpoints Specs
-    CellTempMin = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("T_ZellMin_Set_Batteriestatus")))
-    CellTempMax = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("T_ZellMax_Set_Batteriestatus")))
-    CellTempRange = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("dT_ZellMax_Set_Batteriestatus")))
+    CellTempMin = "{:.2f}".format(float(Master.get("[Batteriestatus_Sollwertvorgaben]").get("T_ZellMin_Set_Batteriestatus")))
+    CellTempMax = "{:.2f}".format(float(Master.get("[Batteriestatus_Sollwertvorgaben]").get("T_ZellMax_Set_Batteriestatus")))
+    CellTempRange = "{:.2f}".format(float(Master.get("[Batteriestatus_Sollwertvorgaben]").get("dT_ZellMax_Set_Batteriestatus")))
     CellVoltageMin = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("U_ZellMin_Set_Batteriestatus")))
     CellVoltageMax = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("U_ZellMax_Set_Batteriestatus")))
     CellVoltageRange = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("dU_ZellMax_Set_Batteriestatus")))
@@ -263,48 +263,48 @@ def getEOL(myFile):
     TempVoltageResult = Master["[Batteriestatus_Ergebnis]"].get("0")
 
     #Pyrofuse Setpoints
-    PyroCheckCount = Master["[Pyrofuse_Allgemeine Informationen]"]["uPruefungszaehlerIst"]
-    PyroMinSet = "{:.5f}".format(float(Master["[Pyrofuse_Sollwertvorgaben]"]["R_PyroMin_Set"]))
-    PyroMaxSet = "{:.5f}".format(float(Master["[Pyrofuse_Sollwertvorgaben]"]["R_PyroMax_Set"]))
+    PyroCheckCount = Master["[Pyrofuse_Allgemeine Informationen]"].get("uPruefungszaehlerIst")
+    PyroMinSet = "{:.5f}".format(float(Master["[Pyrofuse_Sollwertvorgaben]"].get("R_PyroMin_Set")))
+    PyroMaxSet = "{:.5f}".format(float(Master["[Pyrofuse_Sollwertvorgaben]"].get("R_PyroMax_Set")))
 
     #Pyrofuse Check
-    PyroCheckResult = "{:.5f}".format(float(Master["[Pyrofuse_Pruefergebnisse]"]["R_Pyro_Mess"]))
-    PyroCheckStatus = Master["[Pyrofuse_Ergebnis]"]["0"]
+    PyroCheckResult = "{:.5f}".format(float(Master["[Pyrofuse_Pruefergebnisse]"].get("R_Pyro_Mess")))
+    PyroCheckStatus = Master["[Pyrofuse_Ergebnis]"].get("0")
 
     #Pilot Line Check
-    PilotLineCheckResult = Master["[Pilotlinie_BNS_Ergebnis]"]["0"]
+    PilotLineCheckResult = Master["[Pilotlinie_BNS_Ergebnis]"].get("0")
 
     #Klemme 30 Check
-    Klemme30Check = Master["[Klemme_30C_Ergebnis]"]["0"]
+    Klemme30Check = Master["[Klemme_30C_Ergebnis]"].get("0")
 
     #Isolation Resistance Setpoints
-    R1_MBE_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"]["R1_MBE_Set"])) #kOhm
-    R2_MBE_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"]["R2_MBE_Set"])) #kOhm
-    R1_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"]["R1_Set"])) #kOhm
-    R2_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"]["R2_Set"])) #kOhm
+    R1_MBE_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"].get("R1_MBE_Set"))) #kOhm
+    R2_MBE_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"].get("R2_MBE_Set"))) #kOhm
+    R1_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"].get("R1_Set"))) #kOhm
+    R2_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"].get("R2_Set"))) #kOhm
 
     #Isolation Resistance Measurements
-    HVMin = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"]["RHVM_Get"])) #kOhm
-    HVPos = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"]["RHVP_Get"])) #kOhm
-    R1_Get = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"]["R1_Get"])) #kOhm
-    R2_Get = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"]["R2_Get"])) #kOhm
-    IsoResult = Master["[Isolationsueberwachung_Ergebnis]"]["0"]
+    HVMin = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"].get("RHVM_Get"))) #kOhm
+    HVPos = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"].get("RHVP_Get"))) #kOhm
+    R1_Get = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"].get("R1_Get"))) #kOhm
+    R2_Get = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"].get("R2_Get"))) #kOhm
+    IsoResult = Master["[Isolationsueberwachung_Ergebnis]"].get("0")
 
     #Dialectric Strength Setpoints
-    U_SF_Set = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Sollwertvorgaben]"]["U_SF_Set"])) #V
-    I_LeckMin_Set = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Sollwertvorgaben]"]["I_LeckMin_Set"])) #mA
-    I_LeckMax_Set = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Sollwertvorgaben]"]["I_LeckMax_Set"])) #mA
+    U_SF_Set = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Sollwertvorgaben]"].get("U_SF_Set"))) #V
+    I_LeckMin_Set = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Sollwertvorgaben]"].get("I_LeckMin_Set"))) #mA
+    I_LeckMax_Set = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Sollwertvorgaben]"].get("I_LeckMax_Set"))) #mA
 
     #Dialectric Strength Results
-    U_SF_Mess = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Pruefergebnisse]"]["U_SF_Mess"])) #V
-    I_Leck_Mess = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Pruefergebnisse]"]["I_Leck_Mess"])) #mA
-    DieResult = Master["[Spannungsfestigkeit_Ergebnis]"]["0"]
+    U_SF_Mess = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Pruefergebnisse]"].get("U_SF_Mess"))) #V
+    I_Leck_Mess = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Pruefergebnisse]"].get("I_Leck_Mess"))) #mA
+    DieResult = Master["[Spannungsfestigkeit_Ergebnis]"].get("0")
 
     #Operating States
-    OpStateResult = Master["[Betriebszustaende_Ergebnis]"]["0"]
+    OpStateResult = Master["[Betriebszustaende_Ergebnis]"].get("0")
 
     #Final Endline Result
-    FinalResult = Master["[Ergebnis]"]["0"]
+    FinalResult = Master["[Ergebnis]"].get("0")
 
     #List of values for output file
     myExcelData = [battery, partNum, batType, startDate, startTime, i_DTC_Count, initBCMe, initCMC1, initCMC2, initCMC3, flashSW_BMCe, flashSW_CMC1, flashSW_CMC2, flashSW_CMC3, initBL_BCMe, initBL_CMC1, initBL_CMC2, initBL_CMC3, batConfigPset, batVehiclePset, batTargetMarketPset, batConfigNamePset, batThermoPset, batNameVehiclePset, batNameTargetMarket, HW_NumCMC1, HW_NumCMC2, HW_NumCMC3, serial_CMC1, serial_CMC2, serial_CMC3, HW_NumBMCe, HW_serial_BMCe, SW_serial_BMCe, HW_serial_CMC1, HW_serial_CMC2, HW_serial_CMC3, SW_serial_CMC1, SW_serial_CMC2, SW_serial_CMC3, \
