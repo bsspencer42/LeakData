@@ -51,76 +51,76 @@ def getEOL(myFile):
         return False
 
     #General Data
-    battery = Master["[Pruefling]"]["Seriennummer"][7:15]
-    partNum = Master["[Pruefling]"]["Teilenummer"]
-    batType = Master["[Pruefling]"]["Batteriesystemtyp"]
+    battery = Master["[Pruefling]"].get("Seriennummer")[7:15]
+    partNum = Master["[Pruefling]"].get("Teilenummer")
+    batType = Master["[Pruefling]"].get("Batteriesystemtyp")
 
     #PreCheck
-    i_DTC_Count = Master["[SW_Steuergeraete_Allgemeine Informationen]"]["uPruefungszaehlerIst"]
+    i_DTC_Count = Master["[SW_Steuergeraete_Allgemeine Informationen]"].get("uPruefungszaehlerIst")
 
     #Software Setpoint Check
-    initBCMe = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SW_BMCe_Get"]
-    initCMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SW_CMC1_Get"]
-    initCMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SW_CMC2_Get"]
-    initCMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SW_CMC3_Get"]
-    initBL_BCMe = Master["[SW_Steuergeraete_Pruefergebnisse]"]["BL_BMCe_Get"]
-    initBL_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["BL_CMC1_Get"]
-    initBL_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["BL_CMC2_Get"]
-    initBL_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["BL_CMC3_Get"]
-    flashSW_BMCe = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SW_BMCe_IST"]
-    flashSW_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SW_CMC1_IST"]
-    flashSW_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SW_CMC2_IST"]
-    flashSW_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SW_CMC3_IST"]
+    initBCMe = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SW_BMCe_Get")
+    initCMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SW_CMC1_Get")
+    initCMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SW_CMC2_Get")
+    initCMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SW_CMC3_Get")
+    initBL_BCMe = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("BL_BMCe_Get")
+    initBL_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("BL_CMC1_Get")
+    initBL_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("BL_CMC2_Get")
+    initBL_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("BL_CMC3_Get")
+    flashSW_BMCe = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SW_BMCe_IST")
+    flashSW_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SW_CMC1_IST")
+    flashSW_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SW_CMC2_IST")
+    flashSW_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SW_CMC3_IST")
 
     #Default parameters set
-    batConfigPset = Master["[SW_Steuergeraete_Pruefergebnisse]"]["DatensatzVersion_Batteriekonfig_Get"]
-    batVehiclePset = Master["[SW_Steuergeraete_Pruefergebnisse]"]["DatensatzVersion_Fahrzeug_Get"]
-    batVehiclePset = Master["[SW_Steuergeraete_Pruefergebnisse]"]["DatensatzVersion_Fahrzeug_Get"]
-    batTargetMarketPset = Master["[SW_Steuergeraete_Pruefergebnisse]"]["DatensatzVersion_Zielmarkt_Get"]
-    batConfigNamePset = Master["[SW_Steuergeraete_Pruefergebnisse]"]["DatensatzName_Batteriekonfig_Get"]
-    batThermoPset = Master["[SW_Steuergeraete_Pruefergebnisse]"]["DatensatzName_Thermo_Get"]
-    batNameVehiclePset = Master["[SW_Steuergeraete_Pruefergebnisse]"]["DatensatzName_Fahrzeug_Get"]
-    batNameTargetMarket = Master["[SW_Steuergeraete_Pruefergebnisse]"]["DatensatzName_Zielmarkt_Get"]
+    batConfigPset = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("DatensatzVersion_Batteriekonfig_Get")
+    batVehiclePset = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("DatensatzVersion_Fahrzeug_Get")
+    batVehiclePset = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("DatensatzVersion_Fahrzeug_Get")
+    batTargetMarketPset = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("DatensatzVersion_Zielmarkt_Get")
+    batConfigNamePset = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("DatensatzName_Batteriekonfig_Get")
+    batThermoPset = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("DatensatzName_Thermo_Get")
+    batNameVehiclePset = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("DatensatzName_Fahrzeug_Get")
+    batNameTargetMarket = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("DatensatzName_Zielmarkt_Get")
 
     #Hardware PN
-    HW_NumCMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F1A3_CMC1_Get"]
-    HW_NumCMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F1A3_CMC2_Get"]
-    HW_NumCMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F1A3_CMC3_Get"]
-    serial_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SerialNr_CMC1_Get"]
-    serial_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SerialNr_CMC2_Get"]
-    serial_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["SerialNr_CMC3_Get"]
-    HW_NumBMCe = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F1A3_BMCe_Get"]
-    HW_serial_BMCe = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F191_BMCe_Get"]
-    SW_serial_BMCe = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F187_BMCe_Get"]
-    HW_serial_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F191_CMC1_Get"]
-    HW_serial_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F191_CMC2_Get"]
-    HW_serial_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F191_CMC3_Get"]
-    SW_serial_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F187_CMC1_Get"]
-    SW_serial_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F187_CMC2_Get"]
-    SW_serial_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"]["F187_CMC3_Get"]
+    HW_NumCMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F1A3_CMC1_Get")
+    HW_NumCMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F1A3_CMC2_Get")
+    HW_NumCMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F1A3_CMC3_Get")
+    serial_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SerialNr_CMC1_Get")
+    serial_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SerialNr_CMC2_Get")
+    serial_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("SerialNr_CMC3_Get")
+    HW_NumBMCe = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F1A3_BMCe_Get")
+    HW_serial_BMCe = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F191_BMCe_Get")
+    SW_serial_BMCe = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F187_BMCe_Get")
+    HW_serial_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F191_CMC1_Get")
+    HW_serial_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F191_CMC2_Get")
+    HW_serial_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F191_CMC3_Get")
+    SW_serial_CMC1 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F187_CMC1_Get")
+    SW_serial_CMC2 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F187_CMC2_Get")
+    SW_serial_CMC3 = Master["[SW_Steuergeraete_Pruefergebnisse]"].get("F187_CMC3_Get")
 
     #Time/Date
-    timeStamp = Master["[Prueflauf]"]["Startzeit"]
+    timeStamp = Master["[Prueflauf]"].get("Startzeit")
     startDate = timeStamp[:timeStamp.find("_")]
     startDate = startDate[4:6] + "/" + startDate[6:] + "/" + startDate[:4]
     startTime = timeStamp[timeStamp.find("_")+1:].replace("-",":")
 
     #SW Flash Report
-    preFlashBCMeSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PreFlash_BMCSwVers_CheckOK?"]
-    PostFlashBCMeSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PostFlash_BMCSwVers_CheckOK?"]
-    dataSet_download_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["DatensatzdownloadOK?"]
-    PostDSDL_BCMeSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PostDSDL_DSDLSwVers_CheckOK?"]
-    preFlashCMCSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PreFlash_CMCSwVers_CheckOK?"]
-    PostFlashCMCSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"]["PostFlash_CMCSwVers_CheckOK?"]
-    SW_Check = Master["[SW_Steuergeraete_Ergebnis]"]["0"]
+    preFlashBCMeSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"].get("PreFlash_BMCSwVers_CheckOK?")
+    PostFlashBCMeSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"].get("PostFlash_BMCSwVers_CheckOK?")
+    dataSet_download_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"].get("DatensatzdownloadOK?")
+    PostDSDL_BCMeSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"].get("PostDSDL_DSDLSwVers_CheckOK?")
+    preFlashCMCSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"].get("PreFlash_CMCSwVers_CheckOK?")
+    PostFlashCMCSW_Check = Master["[SW_Steuergeraete_Ablaufkriterien]"].get("PostFlash_CMCSwVers_CheckOK?")
+    SW_Check = Master["[SW_Steuergeraete_Ergebnis]"].get("0")
 
     #Battery Status Setpoints Specs
-    CellTempMin = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["T_ZellMin_Set_Batteriestatus"]))
-    CellTempMax = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["T_ZellMax_Set_Batteriestatus"]))
-    CellTempRange = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["dT_ZellMax_Set_Batteriestatus"]))
-    CellVoltageMin = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["U_ZellMin_Set_Batteriestatus"]))
-    CellVoltageMax = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["U_ZellMax_Set_Batteriestatus"]))
-    CellVoltageRange = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"]["dU_ZellMax_Set_Batteriestatus"]))
+    CellTempMin = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("T_ZellMin_Set_Batteriestatus")))
+    CellTempMax = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("T_ZellMax_Set_Batteriestatus")))
+    CellTempRange = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("dT_ZellMax_Set_Batteriestatus")))
+    CellVoltageMin = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("U_ZellMin_Set_Batteriestatus")))
+    CellVoltageMax = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("U_ZellMax_Set_Batteriestatus")))
+    CellVoltageRange = "{:.2f}".format(float(Master["[Batteriestatus_Sollwertvorgaben]"].get("dU_ZellMax_Set_Batteriestatus")))
 
     #Temp Check
     CellTempCheck = Master["[Batteriestatus_Pruefergebnisse]"]["Temperaturwerte iO/niO?"]
@@ -250,9 +250,10 @@ def getEOL(myFile):
     CellVolt96 = "{:.3f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["U_Zell_Get[n] [95]"]))
     CellVoltRange = "{:.1f}".format(float(Master["[Batteriestatus_Pruefergebnisse]"]["dU_Zell_Calc"]))
     CV_DTC1 = Master["[Batteriestatus_Pruefergebnisse]"]["DTCs_Get [0]"]
-    CV_DTC2 = Master["[Batteriestatus_Pruefergebnisse]"]["DTCs_Get [1]"]
-    CV_DTC3 = Master["[Batteriestatus_Pruefergebnisse]"]["DTCs_Get [2]"]
-    CV_DTC4 = Master["[Batteriestatus_Pruefergebnisse]"]["DTCs_Get [3]"]
+    CV_DTC2 = Master["[Batteriestatus_Pruefergebnisse]"].get("DTCs_Get [1]")
+    CV_DTC3 = Master["[Batteriestatus_Pruefergebnisse]"].get("DTCs_Get [2]")
+    CV_DTC4 = Master["[Batteriestatus_Pruefergebnisse]"].get("DTCs_Get [5]")
+
 
     #Cell Voltage and Temp Results
     CellVoltageMinActual = "{:.3f}".format(float(Master["[Batteriestatus_Ablaufkriterien]"]["U_ZellMin_Get"])/1000)
@@ -313,7 +314,7 @@ def getEOL(myFile):
     return myExcelData
 
 #Directory for leak test data
-myEOLDir = r'\\vwoachsfile01\assembly\Departments\Assembly Launch\Battery Plant Status\Pilot Hall\IOL_EOL_Leak Docs\PVS'
+myEOLDir = r'\\vwoachsfile01\assembly\Departments\Assembly Launch\Battery Plant Status\Pilot Hall\IOL_EOL_Leak Docs\All Results'
 
 #Setup Excel file
 wb = Workbook()
@@ -333,6 +334,7 @@ lineNum = 2
 for testData in os.listdir(myEOLDir):
     #Get next filename
     myFile = myEOLDir + "\\" + testData
+    print(myFile)
     #Call file parser function
     myExcelData = getEOL(myFile)
     if myExcelData == False:
