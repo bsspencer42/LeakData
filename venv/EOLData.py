@@ -1,10 +1,9 @@
 from openpyxl import Workbook
+import os
 
-
+#Function for getting data from file
 def getEOL(myFile):
-    myFile = r'\\vwoachsfile01\assembly\Departments\Assembly Launch\Battery Plant Status\Pilot Hall\IOL_EOL_Leak Docs\PVS\288 TX6PVS0340_2021_06_16_180429.ini'
     input_file = open(myFile,'r')
-
     #Variable Setup
     #Master dictionary
     Master = {}
@@ -313,31 +312,45 @@ def getEOL(myFile):
                    CellVoltRange, CV_DTC1, CV_DTC2, CV_DTC3, CV_DTC4, CellVoltageMinActual, CellVoltageMaxActual, CellTempMinActual, CellVoltageMaxActual, TempVoltageResult, PyroCheckCount, PyroMinSet, PyroMaxSet, PyroCheckResult, PyroCheckStatus, PilotLineCheckResult, Klemme30Check, R1_MBE_Set, R2_MBE_Set, R1_Set, R2_Set, R1_MBE_Set, R2_MBE_Set, HVMin, HVPos, IsoResult, U_SF_Set, I_LeckMin_Set, I_LeckMax_Set, U_SF_Mess, I_Leck_Mess, DieResult,OpStateResult,FinalResult]
     return myExcelData
 
+#Directory for leak test data
+myEOLDir = r'\\vwoachsfile01\assembly\Departments\Assembly Launch\Battery Plant Status\Pilot Hall\IOL_EOL_Leak Docs\PVS'
 
-
+#Setup Excel file
 wb = Workbook()
 sheet = wb.active
-count = 0
 
+#Setup Headers
 myHeaders = ["Battery","Part Number", "Type","Date","Start Time","DTC Count","BCMe Begin SW","CMC1 Begin SW","CMC2 Begin SW","CMC3 Begin SW","BCMe Flash SW", "CMC1 Flash SW", "CMC2 Flash SW", "CMC3 Flash SW","BCMe Begin BL","CMC1 Begin BL","CMC2 Begin BL","CMC3 Begin BL","BatConfigPSet","VehiclePSet","TargetMarket","ConfigNamePSet","ThermoPSet","NameVehiclePSet","NameTargetMarket","CMC1 HW","CMC2 HW","CMC3 HW","CMC1 Serial","CMC2 Serial","CMC3 Serial","BCMe HW", "BCMe HW Serial", "BCMe SW Serial", "CMC1 HW Serial","CMC2 HW Serial","CMC3 HW Serial","CMC1 SW Serial","CMC2 SW Serial","CMC3 SW Serial",\
              "preFlashBCMeSW_Check","PostFlashBCMeSW_Check","dataSet_download_Check","PostDSDL_BCMeSW_Check","preFlashCMCSW_Check","PostFlashCMCSW_Check","SW_Check","CellTempMin","CellTempMax","CellTempRange","CellVoltageMin","CellVoltageMax","CellVoltageRange","CellTempCheck","CellTemp1","CellTemp2","CellTemp3","CellTemp4","CellTemp5","CellTemp6","CellTemp7","CellTemp8","CellTemp9","CellTemp10","CellTemp11","CellTemp12","CellTemp13","CellTemp14","CellTemp15","CellTemp16","CellTemp17","CellTemp18","CellTemp19","CellTemp20","CellTemp21","CellTemp22","CellTemp23","CellTemp24",\
              "CellTempRange","CellVolt1","CellVolt2","CellVolt3","CellVolt4","CellVolt5","CellVolt6","CellVolt7","CellVolt8","CellVolt9","CellVolt10","CellVolt11","CellVolt12","CellVolt13","CellVolt14","CellVolt15","CellVolt16","CellVolt17","CellVolt18","CellVolt19","CellVolt20","CellVolt21","CellVolt22","CellVolt23","CellVolt24","CellVolt25","CellVolt26","CellVolt27","CellVolt28","CellVolt29","CellVolt30","CellVolt31","CellVolt32","CellVolt33","CellVolt34","CellVolt35","CellVolt36","CellVolt37","CellVolt38","CellVolt39","CellVolt40","CellVolt41","CellVolt42","CellVolt43","CellVolt44","CellVolt45","CellVolt46","CellVolt47","CellVolt48","CellVolt49","CellVolt50","CellVolt51","CellVolt52","CellVolt53","CellVolt54","CellVolt55","CellVolt56","CellVolt57","CellVolt58","CellVolt59","CellVolt60","CellVolt61","CellVolt62","CellVolt63","CellVolt64","CellVolt65","CellVolt66","CellVolt67","CellVolt68","CellVolt69","CellVolt70","CellVolt71","CellVolt72","CellVolt73","CellVolt74","CellVolt75","CellVolt76","CellVolt77","CellVolt78","CellVolt79","CellVolt80","CellVolt81","CellVolt82","CellVolt83","CellVolt84","CellVolt85","CellVolt86","CellVolt87","CellVolt88","CellVolt89","CellVolt90","CellVolt91","CellVolt92","CellVolt93","CellVolt94","CellVolt95","CellVolt96",\
              "CellVoltRange","CV_DTC1","CV_DTC2","CV_DTC3","CV_DTC4","CellVoltageMinActual","CellVoltageMaxActual","CellTempMinActual","CellVoltageMaxActual","TempVoltageResult","PyroCheckCount","PyroMinSet","PyroMaxSet","PyroCheckResult","PyroCheckStatus","Pilot Line Check","Klemme 30 Check","R1 MBE Set","R2 MBE Set","R1 Set", "R2 Set","Iso Res 1 Setpoint","Iso Res 2 Setpoint", "HV Min Iso", "HV Pos Iso","Iso Result", "Voltage Set", "Current Leak Min", "Current Leak Max", "Voltage Act", "Current Leak Act", "Dielectric Result","Operating States Result","Final Result"]
-count = 0
 
-for header in myHeaders:
-    count = count + 1
-    sheet.cell(1, count).value = header
+for i in range(len(myHeaders)):
+    sheet.cell(1,i+1).value = myHeaders[i]
 
-count = 0
-for myVals in myExcelData:
-    count = count + 1
-    sheet.cell(2,count).value =myVals
+#Populate excel sheet w/ test data
+lineNum = 2
+for testData in os.listdir(myEOLDir):
+    #Get next filename
+    myFile = myEOLDir + "\\" + testData
+    #Call file parser function
+    myExcelData = getEOL(myFile)
+    if myExcelData == False:
+        continue
+    count = 0
+    for myVals in myExcelData:
+        count = count + 1
+        sheet.cell(lineNum, count).value = myVals
+    sheet.cell(lineNum,count+1).value = testData
+    # Format for time
+    sheet.cell(lineNum, 5).number_format = "h:mm:ss AM/PM"
+    lineNum += 1
+    print(myExcelData[3])
+    wb.save(filename="EOL_data.xlsx")
 
-#Format for time
-sheet.cell(2,5).number_format = "h:mm:ss AM/PM"
+#Adjust cell columns
+for column_cells in sheet.columns:
+    length = max(len(str(cell.value)) for cell in column_cells)
+    sheet.column_dimensions[column_cells[0].column_letter].width = length
 
-for i in range(len(myExcelData)):
-    print(myHeaders[i] + " : " +myExcelData[i])
-
-wb.save(filename="hello_world.xlsx")
+wb.save(filename="EOL_data.xlsx")
