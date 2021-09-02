@@ -90,7 +90,7 @@ def getLeak(myFile):
     return myExcelData
 
 #Directory for leak test data
-myLeakDir = r'\\vwoachsfile01\assembly\Departments\Assembly Launch\Battery Plant Status\Pilot Hall\IOL_EOL_Leak Docs\All Results\CW29'
+myLeakDir = r'\\vwoachsfile01\assembly\Departments\Assembly Launch\Battery Plant Status\Pilot Hall\IOL_EOL_Leak Docs\CW33_34'
 
 #Setup Excel workbook
 wb = Workbook()
