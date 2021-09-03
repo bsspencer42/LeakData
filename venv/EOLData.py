@@ -9,7 +9,7 @@ def getEOL(myFile):
     Master = {}
 
     #Initial Values for array
-    battery, partNum, batType,testType, startDate, startTime, i_DTC_Count,SW_BMCe, SW_CMC1, SW_CMC2, SW_CMC3, SW_CMC4, BatConfigPSet, ThermoPSet, VehiclePSet, TargetMarket, NameTargetMarket, NameVehiclePSet, NameThermoPSet, NameBatConfig, CellTempMin, CellTempMax, CellTempRange, CellVoltageMin, CellVoltageMax, CellVoltageRange, CellTempCheck, CellTemp1, CellTemp2, CellTemp3, CellTemp4, CellTemp5, CellTemp6, CellTemp7, CellTemp8, CellTemp9, CellTemp10, CellTemp11, CellTemp12, CellTemp13, CellTemp14, CellTemp15, CellTemp16, CellTemp17, CellTemp18, CellTemp19, CellTemp20, CellTemp21, CellTemp22, CellTemp23, CellTemp24, CellTempRange, CellVolt1, CellVolt2, CellVolt3, CellVolt4, CellVolt5, CellVolt6, CellVolt7, CellVolt8, CellVolt9, CellVolt10, CellVolt11, CellVolt12, CellVolt13, CellVolt14, CellVolt15, CellVolt16, CellVolt17, CellVolt18, CellVolt19, CellVolt20, CellVolt21, CellVolt22, CellVolt23, CellVolt24, CellVolt25, CellVolt26, CellVolt27, CellVolt28, CellVolt29, CellVolt30, CellVolt31, CellVolt32, CellVolt33, CellVolt34, CellVolt35, CellVolt36, CellVolt37, CellVolt38, CellVolt39, CellVolt40, CellVolt41, CellVolt42, CellVolt43, CellVolt44, CellVolt45, CellVolt46, CellVolt47, CellVolt48, CellVolt49, CellVolt50, CellVolt51, CellVolt52, CellVolt53, CellVolt54, CellVolt55, CellVolt56, CellVolt57, CellVolt58, CellVolt59, CellVolt60, CellVolt61, CellVolt62, CellVolt63, CellVolt64, CellVolt65, CellVolt66, CellVolt67, CellVolt68, CellVolt69, CellVolt70, CellVolt71, CellVolt72, CellVolt73, CellVolt74, CellVolt75, CellVolt76, CellVolt77, CellVolt78, CellVolt79, CellVolt80, CellVolt81, CellVolt82, CellVolt83, CellVolt84, CellVolt85, CellVolt86, CellVolt87, CellVolt88, CellVolt89, CellVolt90, CellVolt91, CellVolt92, CellVolt93, CellVolt94, CellVolt95, CellVolt96, CellVoltRange, CellVoltageMinActual, CellVoltageMaxActual, CellTempMinActual, CellVoltageMaxActual, TempVoltageResult, PyroCheckCount, PyroMinSet, PyroMaxSet, PyroCheckResult, PyroCheckStatus, PilotLineCheckResult, Klemme30Check, R1_MBE_Set, R2_MBE_Set, R1_Set, R2_Set, R1_MBE_Set, R2_MBE_Set, HVMin, HVPos, IsoResult, U_SF_Set, I_LeckMin_Set, I_LeckMax_Set, U_SF_Mess, I_Leck_Mess, DieResult, OpStateResult, FinalResult = "", "","", "", "", "", "", "","","", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "","","","","","","",""
+    battery, partNum, batType,testType, startDate, startTime, i_DTC_Count,SW_BMCe, SW_CMC1, SW_CMC2, SW_CMC3, SW_CMC4, BatConfigPSet, ThermoPSet, VehiclePSet, TargetMarket, NameTargetMarket, NameVehiclePSet, NameThermoPSet, NameBatConfig, CellTempMin, CellTempMax, CellTempRange, CellVoltageMin, CellVoltageMax, CellVoltageRange, CellTempCheck, CellTemp1, CellTemp2, CellTemp3, CellTemp4, CellTemp5, CellTemp6, CellTemp7, CellTemp8, CellTemp9, CellTemp10, CellTemp11, CellTemp12, CellTemp13, CellTemp14, CellTemp15, CellTemp16, CellTemp17, CellTemp18, CellTemp19, CellTemp20, CellTemp21, CellTemp22, CellTemp23, CellTemp24, CellTempRange, CellVolt1, CellVolt2, CellVolt3, CellVolt4, CellVolt5, CellVolt6, CellVolt7, CellVolt8, CellVolt9, CellVolt10, CellVolt11, CellVolt12, CellVolt13, CellVolt14, CellVolt15, CellVolt16, CellVolt17, CellVolt18, CellVolt19, CellVolt20, CellVolt21, CellVolt22, CellVolt23, CellVolt24, CellVolt25, CellVolt26, CellVolt27, CellVolt28, CellVolt29, CellVolt30, CellVolt31, CellVolt32, CellVolt33, CellVolt34, CellVolt35, CellVolt36, CellVolt37, CellVolt38, CellVolt39, CellVolt40, CellVolt41, CellVolt42, CellVolt43, CellVolt44, CellVolt45, CellVolt46, CellVolt47, CellVolt48, CellVolt49, CellVolt50, CellVolt51, CellVolt52, CellVolt53, CellVolt54, CellVolt55, CellVolt56, CellVolt57, CellVolt58, CellVolt59, CellVolt60, CellVolt61, CellVolt62, CellVolt63, CellVolt64, CellVolt65, CellVolt66, CellVolt67, CellVolt68, CellVolt69, CellVolt70, CellVolt71, CellVolt72, CellVolt73, CellVolt74, CellVolt75, CellVolt76, CellVolt77, CellVolt78, CellVolt79, CellVolt80, CellVolt81, CellVolt82, CellVolt83, CellVolt84, CellVolt85, CellVolt86, CellVolt87, CellVolt88, CellVolt89, CellVolt90, CellVolt91, CellVolt92, CellVolt93, CellVolt94, CellVolt95, CellVolt96, CellVoltRange, CellVoltageMinActual, CellVoltageMaxActual, CellTempMinActual, CellVoltageMaxActual, TempVoltageResult, FinalResult = "", "", "", "", "","", "", "", "", "", "", "", "", "", "","","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "","","","","","","",""
 
     #Loop through each line in file
     while input_file:
@@ -238,60 +238,6 @@ def getEOL(myFile):
     except:
         pass
 
-    try:
-        #Pyrofuse Setpoints
-        PyroCheckCount = Master["[Pyrofuse_Allgemeine Informationen]"].get("uPruefungszaehlerIst")
-        PyroMinSet = "{:.5f}".format(float(Master["[Pyrofuse_Sollwertvorgaben]"].get("R_PyroMin_Set")))
-        PyroMaxSet = "{:.5f}".format(float(Master["[Pyrofuse_Sollwertvorgaben]"].get("R_PyroMax_Set")))
-
-        #Pyrofuse Check
-        PyroCheckResult = "{:.5f}".format(float(Master["[Pyrofuse_Pruefergebnisse]"].get("R_Pyro_Mess")))
-        PyroCheckStatus = Master["[Pyrofuse_Ergebnis]"].get("0")
-    except:
-        pass
-    try:
-        #Pilot Line Check
-        PilotLineCheckResult = Master["[Pilotlinie_BNS_Ergebnis]"].get("0")
-    except:
-        pass
-    try:
-        #Klemme 30 Check
-        Klemme30Check = Master["[Klemme_30C_Ergebnis]"].get("0")
-    except:
-        pass
-    try:
-        #Isolation Resistance Setpoints
-        R1_MBE_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"].get("R1_MBE_Set"))) #kOhm
-        R2_MBE_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"].get("R2_MBE_Set"))) #kOhm
-        R1_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"].get("R1_Set"))) #kOhm
-        R2_Set = "{:.2f}".format(float(Master["[Isolationsueberwachung_Sollwertvorgaben]"].get("R2_Set"))) #kOhm
-
-        #Isolation Resistance Measurements
-        HVMin = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"].get("RHVM_Get"))) #kOhm
-        HVPos = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"].get("RHVP_Get"))) #kOhm
-        R1_Get = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"].get("R1_Get"))) #kOhm
-        R2_Get = "{:.2f}".format(float(Master["[Isolationsueberwachung_Pruefergebnisse]"].get("R2_Get"))) #kOhm
-        IsoResult = Master["[Isolationsueberwachung_Ergebnis]"].get("0")
-    except:
-        pass
-
-    try:
-        #Dialectric Strength Setpoints
-        U_SF_Set = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Sollwertvorgaben]"].get("U_SF_Set"))) #V
-        I_LeckMin_Set = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Sollwertvorgaben]"].get("I_LeckMin_Set"))) #mA
-        I_LeckMax_Set = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Sollwertvorgaben]"].get("I_LeckMax_Set"))) #mA
-
-        #Dialectric Strength Results
-        U_SF_Mess = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Pruefergebnisse]"].get("U_SF_Mess"))) #V
-        I_Leck_Mess = "{:.2f}".format(float(Master["[Spannungsfestigkeit_Pruefergebnisse]"].get("I_Leck_Mess"))) #mA
-        DieResult = Master["[Spannungsfestigkeit_Ergebnis]"].get("0")
-    except:
-        pass
-    try:
-        #Operating States
-        OpStateResult = Master["[Betriebszustaende_Ergebnis]"].get("0")
-    except:
-        pass
     #Final Endline Result
     FinalResult = Master["[Ergebnis]"].get("0")
 
@@ -299,7 +245,7 @@ def getEOL(myFile):
     myExcelData = [battery, partNum, batType,testType, startDate, startTime, i_DTC_Count, \
                    CellTempMin, CellTempMax, CellTempRange, SW_BMCe, SW_CMC1, SW_CMC2, SW_CMC3, SW_CMC4, BatConfigPSet, ThermoPSet, VehiclePSet, TargetMarket, NameTargetMarket, NameVehiclePSet, NameThermoPSet, NameBatConfig, CellVoltageMin, CellVoltageMax, CellVoltageRange, CellTempCheck, CellTemp1, CellTemp2, CellTemp3, CellTemp4, CellTemp5, CellTemp6, CellTemp7, CellTemp8, CellTemp9, CellTemp10, CellTemp11, CellTemp12, CellTemp13, CellTemp14, CellTemp15, CellTemp16, CellTemp17, CellTemp18, CellTemp19, CellTemp20, CellTemp21, CellTemp22, CellTemp23, CellTemp24, \
                    CellTempRange, CellVolt1, CellVolt2, CellVolt3, CellVolt4, CellVolt5, CellVolt6, CellVolt7, CellVolt8, CellVolt9, CellVolt10, CellVolt11, CellVolt12, CellVolt13, CellVolt14, CellVolt15, CellVolt16, CellVolt17, CellVolt18, CellVolt19, CellVolt20, CellVolt21, CellVolt22, CellVolt23, CellVolt24, CellVolt25, CellVolt26, CellVolt27, CellVolt28, CellVolt29, CellVolt30, CellVolt31, CellVolt32, CellVolt33, CellVolt34, CellVolt35, CellVolt36, CellVolt37, CellVolt38, CellVolt39, CellVolt40, CellVolt41, CellVolt42, CellVolt43, CellVolt44, CellVolt45, CellVolt46, CellVolt47, CellVolt48, CellVolt49, CellVolt50, CellVolt51, CellVolt52, CellVolt53, CellVolt54, CellVolt55, CellVolt56, CellVolt57, CellVolt58, CellVolt59, CellVolt60, CellVolt61, CellVolt62, CellVolt63, CellVolt64, CellVolt65, CellVolt66, CellVolt67, CellVolt68, CellVolt69, CellVolt70, CellVolt71, CellVolt72, CellVolt73, CellVolt74, CellVolt75, CellVolt76, CellVolt77, CellVolt78, CellVolt79, CellVolt80, CellVolt81, CellVolt82, CellVolt83, CellVolt84, CellVolt85, CellVolt86, CellVolt87, CellVolt88, CellVolt89, CellVolt90, CellVolt91, CellVolt92, CellVolt93, CellVolt94, CellVolt95, CellVolt96, \
-                   CellVoltRange,CellVoltageMinActual, CellVoltageMaxActual, CellTempMinActual, CellTempMaxActual, TempVoltageResult, PyroCheckCount, PyroMinSet, PyroMaxSet, PyroCheckResult, PyroCheckStatus, PilotLineCheckResult, Klemme30Check, R1_MBE_Set, R2_MBE_Set, R1_Set, R2_Set, R1_MBE_Set, R2_MBE_Set, HVMin, HVPos, IsoResult, U_SF_Set, I_LeckMin_Set, I_LeckMax_Set, U_SF_Mess, I_Leck_Mess, DieResult,OpStateResult,FinalResult]
+                   CellVoltRange,CellVoltageMinActual, CellVoltageMaxActual, CellTempMinActual, CellTempMaxActual, TempVoltageResult, FinalResult]
     return myExcelData
 
 #Directory for leak test data
@@ -315,7 +261,7 @@ sheet = wb.active
 myHeaders = ["Battery","Part Number", "Type","Test Type","Date","Start Time","DTC Count",\
              "CellTempMin","CellTempMax","CellTempRange","SW_BMCe", "SW_CMC1", "SW_CMC2", "SW_CMC3", "SW_CMC4", "BatConfigPSet", "ThermoPSet", "VehiclePSet", "TargetMarket", "NameTargetMarket", "NameVehiclePSet", "NameThermoPSet", "NameBatConfig","CellVoltageMin","CellVoltageMax","CellVoltageRange","CellTempCheck","CellTemp1","CellTemp2","CellTemp3","CellTemp4","CellTemp5","CellTemp6","CellTemp7","CellTemp8","CellTemp9","CellTemp10","CellTemp11","CellTemp12","CellTemp13","CellTemp14","CellTemp15","CellTemp16","CellTemp17","CellTemp18","CellTemp19","CellTemp20","CellTemp21","CellTemp22","CellTemp23","CellTemp24",\
              "CellTempRange","CellVolt1","CellVolt2","CellVolt3","CellVolt4","CellVolt5","CellVolt6","CellVolt7","CellVolt8","CellVolt9","CellVolt10","CellVolt11","CellVolt12","CellVolt13","CellVolt14","CellVolt15","CellVolt16","CellVolt17","CellVolt18","CellVolt19","CellVolt20","CellVolt21","CellVolt22","CellVolt23","CellVolt24","CellVolt25","CellVolt26","CellVolt27","CellVolt28","CellVolt29","CellVolt30","CellVolt31","CellVolt32","CellVolt33","CellVolt34","CellVolt35","CellVolt36","CellVolt37","CellVolt38","CellVolt39","CellVolt40","CellVolt41","CellVolt42","CellVolt43","CellVolt44","CellVolt45","CellVolt46","CellVolt47","CellVolt48","CellVolt49","CellVolt50","CellVolt51","CellVolt52","CellVolt53","CellVolt54","CellVolt55","CellVolt56","CellVolt57","CellVolt58","CellVolt59","CellVolt60","CellVolt61","CellVolt62","CellVolt63","CellVolt64","CellVolt65","CellVolt66","CellVolt67","CellVolt68","CellVolt69","CellVolt70","CellVolt71","CellVolt72","CellVolt73","CellVolt74","CellVolt75","CellVolt76","CellVolt77","CellVolt78","CellVolt79","CellVolt80","CellVolt81","CellVolt82","CellVolt83","CellVolt84","CellVolt85","CellVolt86","CellVolt87","CellVolt88","CellVolt89","CellVolt90","CellVolt91","CellVolt92","CellVolt93","CellVolt94","CellVolt95","CellVolt96",\
-             "CellVoltRange","CellVoltageMinActual","CellVoltageMaxActual","CellTempMinActual","CellVoltageMaxActual","TempVoltageResult","PyroCheckCount","PyroMinSet","PyroMaxSet","PyroCheckResult","PyroCheckStatus","Pilot Line Check","Klemme 30 Check","R1 MBE Set","R2 MBE Set","R1 Set", "R2 Set","Iso Res 1 Setpoint","Iso Res 2 Setpoint", "HV Min Iso", "HV Pos Iso","Iso Result", "Voltage Set", "Current Leak Min", "Current Leak Max", "Voltage Act", "Current Leak Act", "Dielectric Result","Operating States Result","Final Result"]
+             "CellVoltRange","CellVoltageMinActual","CellVoltageMaxActual","CellTempMinActual","CellVoltageMaxActual","TempVoltageResult", "Voltage Set","Final Result"]
 
 for i in range(len(myHeaders)):
     sheet.cell(1,i+1).value = myHeaders[i]
