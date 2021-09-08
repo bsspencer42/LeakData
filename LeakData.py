@@ -47,15 +47,22 @@ def getLeak(myFile):
 
             Master[header] = myDict
 
+    input_file.close()
     ###############################################
     #Check if valid leak file
-    if "[pPosZSB_Pruefergebnisse]" not in Master.keys():
+    if not Master["[Pruefstand]"]["Pruefstandstyp"] == "Dichtigkeit":
         return False
+    if "[Pruefling]" not in Master.keys():
+        print(input_file.name.split('\\')[-1])
 
     # General Data
-    battery = Master["[Pruefling]"]["Seriennummer"].replace("288 TX6","").upper().replace("X","").replace(" ","")
-    partNum = Master["[Pruefling]"]["Teilenummer"]
-    batType = Master["[Pruefling]"]["Batteriesystemtyp"]
+    try:
+        battery, partNum, batType = "","",""
+        battery = Master["[Pruefling]"]["Seriennummer"].replace("288 TX6","").upper().replace("X","").replace(" ","")
+        partNum = Master["[Pruefling]"]["Teilenummer"]
+        batType = Master["[Pruefling]"]["Batterietyp"]
+    except:
+        pass
 
     # Time/Date
     timeStamp = Master["[Prueflauf]"]["Startzeit"]
@@ -90,7 +97,7 @@ def getLeak(myFile):
     return myExcelData
 
 #Directory for leak test data
-myLeakDir = r'\\vwoachsfile01\assembly\Departments\Assembly Launch\Battery Plant Status\Pilot Hall\IOL_EOL_Leak Docs\CW33_34'
+myLeakDir = r'\\na.vwg\chattanooga\Dept\CA\50_ELECTRIC\10 Battery Specialist\210_Leak\Results\Results'
 
 #Setup Excel workbook
 wb = Workbook()
@@ -119,7 +126,7 @@ for testData in os.listdir(myLeakDir):
     # Format for time
     sheet.cell(lineNum, 5).number_format = "h:mm:ss AM/PM"
     lineNum += 1
-    print(myExcelData[3])
+    #print(myExcelData[3])
     wb.save(filename="leak_data.xlsx")
 
 #Adjust cell columns
